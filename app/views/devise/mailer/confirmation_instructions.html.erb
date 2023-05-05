@@ -1,0 +1,9 @@
+<h1>Welcome to BudgetApp <%= @email %>!</h1>
+
+<p>My name is Josepg Ogbole and this is a simple budget App, kindly, feel free to share your observations for improvement:</p>
+
+<p>Check out my <%= link_to 'GitHub', 'https://github.com/ONJoseph' %> and <%= link_to 'LinkedIn', 'https://www.linkedin.com/in/o-n-joseph/' %>.</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
