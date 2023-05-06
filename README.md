@@ -105,11 +105,17 @@ categories (mandatory at least one)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🚀 Live Demo & Project Presentation <a name="live-demo"></a>
+<!-- LIVE DEMO -->
 
-- Live Demo coming soon...
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo Link](https://budgetapp-a1ru.onrender.com/)
+
+### Video documentation 📹
+- [Video presentation by Joseph Ogbole](https://www.loom.com/share/234eeca26cba42008ac4ee1d71752c97)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- GETTING STARTED -->
 
