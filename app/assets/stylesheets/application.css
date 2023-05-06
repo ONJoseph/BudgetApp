@@ -432,7 +432,7 @@ input[type="submit"]:hover,
 
 .delete-btn,
 .delete-group {
-  background-color: #aa3333;
+  background-color: #a33;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -452,7 +452,7 @@ input[type="submit"]:hover,
 }
 
 .white-btn {
-  background-color: fff;
+  background-color: #fff;
   color: #959595;
   border-style: none;
   cursor: pointer;
@@ -558,7 +558,7 @@ tbody tr:nth-child(odd) {
   label {
     font-size: 13px;
   }
-  
+
   .left-arrow {
     font-size: 1.5em;
   }
