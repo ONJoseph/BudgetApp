@@ -109,7 +109,7 @@ categories (mandatory at least one)
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://budgetapp-a1ru.onrender.com/)
+- [Live Demo Link](https://budgetapp-mxoy.onrender.com)
 
 ### Video documentation 📹
 - [Video presentation by Joseph Ogbole](https://www.loom.com/share/234eeca26cba42008ac4ee1d71752c97)
