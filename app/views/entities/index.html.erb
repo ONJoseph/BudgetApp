@@ -1,38 +1,41 @@
 <main class="body-container">
 <section class="container">
+    <% total_amount = 0 %>
+    <% @entities.each do |entity| %>
+          <% total_amount += entity.amount %>
+    <% end %>
     <table>
       <thead>
+      <tr>
+          <th> </th>
+          <th>Total Amount</th>
+          <th><%= sprintf('%.2f', total_amount) %></th>
+        </tr>
         <tr>
           <th>Name</th>
           <th>Group</th>
           <th>Amount</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
+        </tr>   
       </thead>
       <tbody>
-        <% total_amount = 0 %>
         <% @entities.each do |entity| %>
-          <% total_amount += entity.amount %>
           <tr>
             <td><%= entity.name %></td>
             <td><%= entity.group.name %></td>
-            <td>$<%= entity.amount %></td>
-            <td><%= link_to 'Edit', edit_user_group_entity_path(current_user, entity.group, entity), class:"blue-btn edit-t" %></td>
-            <td><%= button_to 'Delete', user_group_entity_path(current_user, entity.group, entity), class: "delete-btn", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>$<%= sprintf('%.2f', entity.amount) %></td>
+            <td><%= link_to 'Edit', edit_user_group_entity_path(current_user, entity.group, entity), class:"blue-btn edit-t" %>
+          <%= button_to 'Delete', user_group_entity_path(current_user, entity.group, entity), class: "delete-btn edit-t", method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
-            <tr>
-              <td>Total Amount</td>
-              <td><%= total_amount %></td>
-              <td></td>
-            </tr>
       </tbody>
     </table>
 
     <br>
 
-    <%= link_to 'New Entity', new_user_group_entity_path, class: "green-btn" %>
-
+    <div class="green-rectangle">
+        <div class="white-outline">
+            <%= link_to 'ADD A NEW TRANSACTION', new_user_group_entity_path, class: "green-btn" %>
+        </div>
+    </div>
   </section>
 </main>

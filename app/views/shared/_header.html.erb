@@ -13,8 +13,14 @@
     <span></span>
   </div>
 
-  <div class="header">
-    <h2 class="header-nav"><%= header %></h2>
+<div class="header">
+    <% if controller_name.include? "registration" %>
+      <h2 class="header-nav">SIGN UP</h2>
+    <% elsif controller_name.include? "session" %>
+      <h2 class="header-nav">LOGIN</h2>
+    <% else %> 
+      <h2 class="header-nav"><%= header %></h2> 
+    <% end %>  
   </div>
 
   <div class="search-icon">
@@ -35,7 +41,7 @@
     <% end %>
   </div>
 
-<!-- Navigation menu -->
+<!-- Navigation -->
 <nav class="menu">
   <ul>
 

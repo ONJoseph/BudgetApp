@@ -4,13 +4,15 @@ class EntitiesController < ApplicationController
   before_action :set_entity, only: %i[show edit update destroy]
 
   def index
-    @header = 'Entities'
     @group = Group.find(params[:group_id])
+    @header = 'Transactions'
     @entities = @group.entities.where(author: current_user).order(created_at: :desc)
   end
 
   def new
+    @header = 'New Transaction'
     @entity = @group.entities.build
+    @groups = current_user.groups
   end
 
   def create
@@ -19,7 +21,7 @@ class EntitiesController < ApplicationController
     respond_to do |format|
       if @entity.save
         format.html do
-          redirect_to user_group_entities_path(current_user, @group), notice: 'Entity was successfully created!'
+          redirect_to user_group_entities_path(current_user, @group), notice: 'Transacction was successfully created!'
         end
         format.json { render :show, status: :created, location: @entity }
       else
@@ -33,7 +35,7 @@ class EntitiesController < ApplicationController
 
   def update
     if @entity.update(entity_params)
-      redirect_to user_group_entities_path(@entity.group), notice: 'Entity was successfully updated!'
+      redirect_to user_group_entities_path(@entity.group), notice: 'Transacction was successfully updated!'
     else
       render :edit
     end
@@ -41,7 +43,7 @@ class EntitiesController < ApplicationController
 
   def destroy
     @entity.destroy
-    redirect_to user_group_entities_path(@entity.group), notice: 'Entity was successfully destroyed!'
+    redirect_to user_group_entities_path(@entity.group), notice: 'Transacction was successfully destroyed!'
   end
 
   private

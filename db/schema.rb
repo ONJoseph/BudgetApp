@@ -52,6 +52,13 @@ ActiveRecord::Schema[7.0].define(version: 202305040255755) do
     t.index ["group_id"], name: "index_entities_on_group_id"
   end
 
+  create_table "entities_groups", id: false, force: :cascade do |t|
+    t.bigint "entity_id"
+    t.bigint "group_id"
+    t.index ["entity_id"], name: "index_entities_groups_on_entity_id"
+    t.index ["group_id"], name: "index_entities_groups_on_group_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
