@@ -1,5 +1,6 @@
 require 'factory_bot_rails'
 require 'rack_session_access/capybara'
+require 'devise'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'

@@ -1,6 +1,8 @@
 class Group < ApplicationRecord
   include PgSearch::Model
 
+  attr_accessor :user
+
   pg_search_scope :whose_name_starts_with,
                   against: :name,
                   using: {
