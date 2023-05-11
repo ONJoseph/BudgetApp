@@ -15,7 +15,7 @@
  */
 * {
   font-family: 'Proxima Nova', sans-serif;
-  color: #000000; 
+  color: #000;
 }
 
 .bg-green {
@@ -102,10 +102,6 @@ input[type="submit"],
   background-color: #e6e6e6;
 }
 
-body {
-  margin: 0;
-}
-
 .left-arrow {
   font-size: 2em;
   margin-left: 10px;
@@ -124,7 +120,7 @@ body {
 .search-icon i {
   font-size: 1.5em;
   margin-right: 10px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .alert {
@@ -346,6 +342,7 @@ li.transaction {
   margin: 0;
   margin-left: 35px;
 }
+
 li.transaction > p {
   margin: 4px 0;
 }
