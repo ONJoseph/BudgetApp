@@ -24,7 +24,7 @@ RSpec.describe 'Sessions', type: :request do
     context 'with invalid credentials' do
       it 'renders the login page with an error message' do
         post user_session_path, params: { user: { email: user.email, password: 'invalid' } }
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(422)
         expect(response.body).to include('Invalid Email or password')
       end
     end
