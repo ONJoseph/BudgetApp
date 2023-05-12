@@ -12,7 +12,7 @@
               <% if group.icon.attached? %>
                 <%= image_tag group.icon, class: "group-icon" %>
               <% else %>
-                <%= image_tag "default_product_image.webp", class: "group-icon" %>
+                <%= image_tag "product_image.webp", class: "group-icon" %>
               <% end %>
               <h3> <%= group.name %> </h3>
               <p id="total-amount">$<%= group.entities.sum(:amount) %></p>

@@ -17,14 +17,14 @@ class EntitiesController < ApplicationController
 
   def create
     @entity = @group.entities.build(entity_params)
-
     respond_to do |format|
       if @entity.save
         format.html do
-          redirect_to user_group_entities_path(current_user, @group), notice: 'Transacction was successfully created!'
+          redirect_to user_group_entities_path(current_user, @group), notice: 'Transaction was successfully created.'
         end
         format.json { render :show, status: :created, location: @entity }
       else
+        @groups = current_user.groups
         format.html { render :new }
         format.json { render json: @entity.errors, status: :unprocessable_entity }
       end

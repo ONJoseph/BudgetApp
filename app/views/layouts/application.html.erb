@@ -20,7 +20,7 @@
 
   <body>
   <% unless current_page?(welcome_path) %>
-    <%= render partial: 'shared/header', locals: { header: @header || "Budget Wizard" } %>
+    <%= render partial: 'shared/header', locals: { header: @header || "BudgetApp" } %>
   <% end %>
     <% if notice %>
       <div class="alert-success">

@@ -2,58 +2,81 @@
 <section class="navigation-bar">
   <div class="<%= user_signed_in? ? 'menu-btn signed-in' : 'not-signed-in' %>">
     <% if !current_user %>
-        <div class="left-arrow">
-          <%= link_to welcome_path do%>
-              <i class="fa-solid fa-arrow-left"></i>
-          <% end %>
-        </div>
+      <div class="left-arrow">
+        <%= link_to welcome_path do%>
+          <i class="fa-solid fa-arrow-left"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <% if controller_name == "groups" && action_name == "index" %>
+      <div class="left-arrow">
+        <%= link_to destroy_user_session_path do%>
+          <i class="fa-solid fa-arrow-left"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <% if controller_name == "groups" && action_name == "new" %>
+      <div class="left-arrow">
+        <%= link_to user_groups_path do%>
+          <i class="fa-solid fa-arrow-left"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <% if controller_name == "entities" && action_name == "index" %>
+      <div class="left-arrow">
+        <%= link_to user_groups_path do%>
+          <i class="fa-solid fa-arrow-left"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <% if controller_name == "entities" && action_name == "new" %>
+      <div class="left-arrow">
+        <%= link_to user_group_entities_path(current_user, @group) do%>
+          <i class="fa-solid fa-arrow-left"></i>
+        <% end %>
+      </div>
     <% end %>
     <span></span>
     <span></span>
     <span></span>
   </div>
-
-<div class="header">
+  <div class="header">
     <% if controller_name.include? "registration" %>
-      <h2 class="header-nav">SIGN UP</h2>
+      <h2 class="header-nav">REGISTRATION</h2>
     <% elsif controller_name.include? "session" %>
       <h2 class="header-nav">LOGIN</h2>
-    <% else %> 
-      <h2 class="header-nav"><%= header %></h2> 
-    <% end %>  
+    <% else %>
+      <h2 class="header-nav"><%= header %></h2>
+    <% end %>
   </div>
-
   <div class="search-icon">
     <% if current_user %>
       <% if current_page?(root_path) || current_page?(user_groups_path(current_user))%>
         <i class="fa-solid fa-magnifying-glass"></i>
-        <% end %>
-    <% end %>
-  </div>
-
-</section>
-  <div class="search-form <%= 'hidden' unless params[:query].present? %>">
-    <% if current_user && (current_page?(root_path) || current_page?(user_groups_path(current_user))) %>
-      <%= form_with url: user_groups_path(current_user), method: :get do |f| %>
-        <%= f.text_field :query, placeholder: "Search...", autofocus: true, onChange: 'this.form.requestSubmit()', value: params[:query] %>
-        <%= submit_tag "Search" %>
       <% end %>
     <% end %>
   </div>
-
+</section>
+<div class="search-form <%= 'hidden' unless params[:query].present? %>">
+  <% if current_user && (current_page?(root_path) || current_page?(user_groups_path(current_user))) %>
+    <%= form_with url: user_groups_path(current_user), method: :get do |f| %>
+      <%= f.text_field :query, placeholder: "Search...", autofocus: true, onChange: 'this.form.requestSubmit()', value: params[:query] %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  <% end %>
+</div>
 <!-- Navigation -->
 <nav class="menu">
   <ul>
-
     <% if current_user %>
       <%= link_to user_path(current_user), id: "option" do %>
-      <li class="avatar">
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar, class: "avatar user-avatar" %>
-        <% else %>
-          <%= image_tag 'default-avatar.webp', class: "avatar user-avatar"  %>
-        <% end %>
-      </li>
+        <li class="avatar">
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, class: "avatar user-avatar" %>
+          <% else %>
+            <%= image_tag 'avatar.webp', class: "avatar user-avatar"  %>
+          <% end %>
+        </li>
       <% end %>
       <li class="user-name">User: <%= current_user.name %></li>
       <li><%= link_to 'Home', root_path, id: "option" %></li>
@@ -69,7 +92,6 @@
     <% end %>
   </ul>
 </nav>
-
 <script>
   let searchIcon = document.querySelector('.search-icon');
   let searchForm = document.querySelector('.search-form');
@@ -81,5 +103,5 @@
     searchForm.addEventListener('submit', () => {
       searchForm.classList.remove('hidden');
     });
-
 </script>
+

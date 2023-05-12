@@ -1,10 +1,10 @@
 <main class="body-container">
   <section class="container">
     <%= form_for [current_user, @group, @entity], html: { class: "fo-ent" } do |f| %>
-      <div class="fo-fields>
+      <div class="fo-fields">
         <% if @entity.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this transacction from being saved:</h2>
+            <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this transaction from being saved:</h2>
             <ul>
               <% @entity.errors.full_messages.each do |message| %>
                 <li class="alert-danger"><%= message %></li>
@@ -12,36 +12,31 @@
             </ul>
           </div>
         <% end %>
-
         <div class="field">
           <%= f.text_field :name, placeholder: 'Transaction name' %>
         </div>
-
         <div class="field">
           <%= f.number_field :amount, placeholder: 'Amount' %>
         </div>
-
-        <% if 1==0 %>
-        <div class="field">
-        <% @groups.each do |group| %>
+        <div class="field fx-wrap">
+          <% @groups.each do |group| %>
             <p>
               <%= f.check_box :group_id, { multiple: true, checked: false, hidden: false }, group.id, nil %>
               <%= f.label group.name %>
             </p>
           <% end %>
         </div>
+        <% if 1==0 %>
+          <div class="field">
+            <%= check_box_tag 'Category', 'group.id', true, disabled: false %>
+            <%= f.label @group.name %>
+          </div>
         <% end %>
-            
-        <div class="field">
-          <%= check_box_tag 'Category', 'group.id', true, disabled: false %>
-          <%= f.label @group.name %>
-        </div>
-
         <%= f.hidden_field :author_id, value: current_user.id %>
       </div>
       <div class="green-rectangle">
         <div class="white-outline">
-            <%= f.submit 'SAVE TRANSACTION' , class: 'green-btn' %>
+          <%= f.submit 'SAVE TRANSACTION', class: 'green-btn' %>
         </div>
       </div>
     <% end %>

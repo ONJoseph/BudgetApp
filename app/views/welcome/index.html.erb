@@ -1,15 +1,15 @@
 <main class="full-container">
   <h1>BudgetApp</h1>
-  <div class="img center-image">
-  <%= image_tag "budget.png", alt: "App Logo", style: "width: 60%" %>
-</div>
   <div class="welcome-links">
-      <%= link_to new_user_session_path do%>
-        <button class="blue-btn">
-        LOG IN
-        </button>
-      <% end %>
-
+    <%= image_tag "budget.png", alt: "App Logo", style: "width: 60%" %>
+  </div>
+  <div class="welcome-links">
+    <%# <%= link_to new_user_session_path do%>
+      <%#  <button class="blue-btn">
+    <%#    LOG IN
+    <%#  </button>
+    <%# <% end %>
+      <%= button_to 'Log in', new_user_session_path, method: :get, class: 'blue-btn' %>
       <%= link_to new_user_registration_path do%>
         <button class="white-btn">
           SIGN UP

@@ -1,41 +1,47 @@
 <main class="body-container">
-<section class="container">
+  <section class="container cus-con-fs al-it-left">
+    <div class="group-info al-it-left">
+      <% if @group.icon.attached? %>
+        <%= image_tag @group.icon, class: "group-icon" %>
+      <% else %>
+        <%= image_tag "product_image.webp", class: "group-icon" %>
+      <% end %>
+      <h3><%= @group.name %></h3>
+    </div>
     <% total_amount = 0 %>
     <% @entities.each do |entity| %>
-          <% total_amount += entity.amount %>
+      <% total_amount += entity.amount %>
     <% end %>
     <table>
       <thead>
-      <tr>
+        <tr>
           <th> </th>
           <th>Total Amount</th>
           <th><%= sprintf('%.2f', total_amount) %></th>
         </tr>
         <tr>
-          <th>Name</th>
-          <th>Group</th>
+          <th class="cus-l">Name</th>
+          <th class="cus-l"> </th>
           <th>Amount</th>
-        </tr>   
+        </tr>
       </thead>
       <tbody>
         <% @entities.each do |entity| %>
           <tr>
-            <td><%= entity.name %></td>
-            <td><%= entity.group.name %></td>
+            <td class="cus-l"><%= entity.name %></td>
+            <td class="cus-l"> </td>
             <td>$<%= sprintf('%.2f', entity.amount) %></td>
             <td><%= link_to 'Edit', edit_user_group_entity_path(current_user, entity.group, entity), class:"blue-btn edit-t" %>
-          <%= button_to 'Delete', user_group_entity_path(current_user, entity.group, entity), class: "delete-btn edit-t", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <%= button_to 'Delete', user_group_entity_path(current_user, entity.group, entity), class: "delete-btn edit-t", method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
-
     <br>
-
     <div class="green-rectangle">
-        <div class="white-outline">
-            <%= link_to 'ADD A NEW TRANSACTION', new_user_group_entity_path, class: "green-btn" %>
-        </div>
+      <div class="white-outline">
+        <%= link_to 'ADD A NEW TRANSACTION', new_user_group_entity_path, class: "green-btn" %>
+      </div>
     </div>
   </section>
 </main>
