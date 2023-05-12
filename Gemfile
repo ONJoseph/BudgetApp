@@ -9,6 +9,8 @@ gem 'letter_opener', group: :development
 # Devise for user authentication
 gem 'devise'
 
+gem 'cancancan'
+
 # Gem for searching groups
 gem 'pg_search', '~> 2.3'
 
