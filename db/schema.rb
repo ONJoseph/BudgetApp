@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 202305040255755) do
     t.integer "entity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "author_id"
   end
 
   create_table "users", force: :cascade do |t|
